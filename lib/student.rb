@@ -24,6 +24,14 @@ class Student
     end
   end
 
+  def update
+    sql = <<-SQL
+      UPDATE studnets
+      SET name = ?, grade = ?
+      WHERE id = ?
+    SQL
+  end
+
   def self.create_table
     sql = <<-SQL
       CREATE TABLE students(
