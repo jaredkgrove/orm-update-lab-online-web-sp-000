@@ -30,6 +30,7 @@ class Student
       SET name = ?, grade = ?
       WHERE id = ?
     SQL
+    db[:conn].execute(sql, self.name, self.grade, self.id)
   end
 
   def self.create_table
