@@ -19,7 +19,7 @@ class Student
         INSERT INTO students (name, grade)
         VALUES (?, ?)
       SQL
-      db[:conn].execute(sql, self.name, self.grade)
+      DB[:conn].execute(sql, self.name, self.grade)
       self.id = db[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
     end
   end
@@ -30,7 +30,7 @@ class Student
       SET name = ?, grade = ?
       WHERE id = ?
     SQL
-    db[:conn].execute(sql, self.name, self.grade, self.id)
+    DB[:conn].execute(sql, self.name, self.grade, self.id)
   end
 
   def self.create_table
