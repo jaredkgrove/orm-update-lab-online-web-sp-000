@@ -11,6 +11,15 @@ class Student
     @id = id
   end
 
+  def save
+    sql = <<-SQL 
+      INSERT INTO students (name, grade)
+      VALUES (?, ?)
+    SQL 
+    db[:conn].execute(sql, self.name, self.grade)
+    self.id = db[:conn].execute("SELECT last_insert_rowid() FROM students")[0][0]
+  end
+
   def self.create_table
     sql = <<-SQL
       CREATE TABLE students(
