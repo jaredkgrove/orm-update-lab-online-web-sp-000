@@ -26,7 +26,7 @@ class Student
 
   def update
     sql = <<-SQL
-      UPDATE studnets
+      UPDATE students
       SET name = ?, grade = ?
       WHERE id = ?
     SQL
